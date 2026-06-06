@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data QA Associate Pro - Premium Dashboard</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+  <!-- jsPDF and Chart.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="dark-mode">
+  <div class="app-container">
+    
+    <!-- Sidebar for Desktop -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo-glow"></div>
+        <i data-lucide="shield-check" class="brand-icon"></i>
+        <div class="brand-text">
+          <h1>QA Associate</h1>
+          <span>Premium Data Engine</span>
+        </div>
+      </div>
+      
+      <nav class="nav-menu">
+        <button class="nav-item active" data-target="dashboard-section">
+          <i data-lucide="layout-dashboard"></i>
+          <span>Dashboard</span>
+        </button>
+        <button class="nav-item" data-target="qa-section">
+          <i data-lucide="file-spreadsheet"></i>
+          <span>Data QA Grid</span>
+          <span class="badge" id="qa-badge">6</span>
+        </button>
+        <button class="nav-item" data-target="clean-section">
+          <i data-lucide="braces"></i>
+          <span>Regex & Parse</span>
+        </button>
+        <button class="nav-item" data-target="erp-section">
+          <i data-lucide="refresh-cw"></i>
+          <span>ERP Integrations</span>
+        </button>
+        <button class="nav-item" data-target="report-section">
+          <i data-lucide="file-text"></i>
+          <span>Premium Reports</span>
+        </button>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <div class="security-lock">
+          <i data-lucide="lock" class="lock-icon text-success"></i>
+          <div>
+            <p class="sec-title">AES-256 Secured</p>
+            <p class="sec-subtitle">HIPAA / GDPR Ready</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      
+      <!-- Top header bar -->
+      <header class="header">
+        <div class="header-left">
+          <h2 id="section-title">Executive Dashboard</h2>
+          <p id="section-subtitle">Real-time merchant QA & compliance engine</p>
+        </div>
+        <div class="header-right">
+          <!-- Fast Stats (Compact Header Dashboard) -->
+          <div class="header-stats">
+            <div class="header-stat">
+              <span class="stat-lbl">QA PASS RATE</span>
+              <span class="stat-val text-success" id="header-pass-rate">94.8%</span>
+            </div>
+            <div class="header-stat">
+              <span class="stat-lbl">ANOMALIES</span>
+              <span class="stat-val text-danger" id="header-anomalies">3</span>
+            </div>
+          </div>
+          <button class="btn btn-icon" id="theme-toggle" title="Toggle Light/Dark Mode">
+            <i data-lucide="sun" id="theme-icon"></i>
+          </button>
+          <div class="profile">
+            <div class="avatar">QA</div>
+            <div class="profile-info">
+              <span class="p-name">Lead Auditor</span>
+              <span class="p-role">Finance Ops</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Bottom Nav for Mobile -->
+      <nav class="mobile-nav">
+        <button class="mobile-nav-item active" data-target="dashboard-section">
+          <i data-lucide="layout-dashboard"></i>
+          <span>Dashboard</span>
+        </button>
+        <button class="mobile-nav-item" data-target="qa-section">
+          <i data-lucide="file-spreadsheet"></i>
+          <span>Data QA</span>
+        </button>
+        <button class="mobile-nav-item" data-target="clean-section">
+          <i data-lucide="braces"></i>
+          <span>Clean</span>
+        </button>
+        <button class="mobile-nav-item" data-target="erp-section">
+          <i data-lucide="refresh-cw"></i>
+          <span>ERP</span>
+        </button>
+        <button class="mobile-nav-item" data-target="report-section">
+          <i data-lucide="file-text"></i>
+          <span>Report</span>
+        </button>
+      </nav>
+
+      <!-- Content Views -->
+      <div class="view-container">
+        
+        <!-- SECTION 1: DASHBOARD -->
+        <section id="dashboard-section" class="view-pane active">
+          <!-- KPI Cards Grid -->
+          <div class="kpi-grid">
+            <div class="kpi-card bg-glass">
+              <div class="kpi-header">
+                <span class="kpi-title">Ingestion Volume</span>
+                <i data-lucide="file-up" class="kpi-icon text-primary"></i>
+              </div>
+              <p class="kpi-value" id="kpi-volume">48</p>
+              <span class="kpi-trend text-success"><i data-lucide="trending-up"></i> +12% vs last week</span>
+            </div>
+            
+            <div class="kpi-card bg-glass animate-pulse-border">
+              <div class="kpi-header">
+                <span class="kpi-title">Unresolved Anomalies</span>
+                <i data-lucide="alert-triangle" class="kpi-icon text-danger"></i>
+              </div>
+              <p class="kpi-value text-danger" id="kpi-anomalies">3</p>
+              <span class="kpi-trend text-danger"><i data-lucide="trending-down"></i> High priority action required</span>
+            </div>
+            
+            <div class="kpi-card bg-glass">
+              <div class="kpi-header">
+                <span class="kpi-title">NetSuite/Ramp Synced</span>
+                <i data-lucide="check-circle-2" class="kpi-icon text-success"></i>
+              </div>
+              <p class="kpi-value text-success" id="kpi-synced">42</p>
+              <span class="kpi-trend text-success"><i data-lucide="trending-up"></i> 87.5% auto-reconciled</span>
+            </div>
+            
+            <div class="kpi-card bg-glass">
+              <div class="kpi-header">
+                <span class="kpi-title">Total Audited Value</span>
+                <i data-lucide="dollar-sign" class="kpi-icon text-warning"></i>
+              </div>
+              <p class="kpi-value" id="kpi-value-sum">$342,850.50</p>
+              <span class="kpi-trend text-muted"><i data-lucide="calendar"></i> FY26 Q2 cycle</span>
+            </div>
+          </div>
+
+          <!-- Charts Area -->
+          <div class="chart-layout">
+            <div class="chart-container bg-glass">
+              <h3 class="chart-title">Merchant Volume & Spend Trend</h3>
+              <div class="canvas-wrapper">
+                <canvas id="spendTrendChart"></canvas>
+              </div>
+            </div>
+            
+            <div class="chart-container bg-glass">
+              <h3 class="chart-title">Market Share & Categorization</h3>
+              <div class="canvas-wrapper">
+                <canvas id="categoryShareChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <div class="insights-layout">
+            <div class="insights-panel bg-glass" id="quality-insights-panel">
+              <h3><i data-lucide="lightbulb" class="text-warning"></i> Automated Quality Insights</h3>
+              <ul class="insights-list">
+                <li>
+                  <i data-lucide="alert-circle" class="text-danger"></i>
+                  <span><strong>NetSuite Mapping Conflict:</strong> Vendor <em>"Adobe Systems Inc."</em> maps to general general-ledger account 6120 (Licenses) but Ramp card reports 6130 (SaaS Services). Action recommended.</span>
+                </li>
+                <li>
+                  <i data-lucide="check" class="text-success"></i>
+                  <span><strong>Clean Rate Spike:</strong> Regular expressions automatically normalized 18 raw strings this session, maintaining an invoice data ingestion accuracy rate of 99.8%.</span>
+                </li>
+                <li>
+                  <i data-lucide="info" class="text-info"></i>
+                  <span><strong>GAAP Validation Check:</strong> All 42 synced transactions meet IRS requirements for business expense documentation.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 2: DATA QA GRID -->
+        <section id="qa-section" class="view-pane">
+          
+          <!-- Ingestion Module -->
+          <div class="ingestion-area bg-glass">
+            <div class="ingestion-header">
+              <h3><i data-lucide="download-cloud" class="text-primary"></i> Data Ingestion & Sample Loader</h3>
+              <span class="text-muted text-sm">Upload real business documents or select simulated streams.</span>
+            </div>
+            
+            <div class="ingestion-grid">
+              <!-- Drag and Drop Dropzone -->
+              <div class="dropzone" id="file-dropzone">
+                <input type="file" id="file-input" multiple class="file-hidden">
+                <i data-lucide="upload-cloud" class="upload-icon"></i>
+                <p class="dropzone-text">Drag & drop document here or <span>browse files</span></p>
+                <span class="dropzone-subtext">Supports PDF, Excel, Word, PPTX, EML, TXT (Encrypted AES-256 upload)</span>
+              </div>
+              
+              <!-- Quick Sample Stream Trigger -->
+              <div class="sample-streams">
+                <h4>Simulated Feed Injectors</h4>
+                <div class="stream-buttons">
+                  <button class="btn btn-outline" onclick="injectSample('eml')">
+                    <i data-lucide="mail" class="text-primary"></i> Expense Email (.eml)
+                  </button>
+                  <button class="btn btn-outline" onclick="injectSample('pdf')">
+                    <i data-lucide="file-text" class="text-danger"></i> NetSuite Invoice (.pdf)
+                  </button>
+                  <button class="btn btn-outline" onclick="injectSample('xlsx')">
+                    <i data-lucide="sheet" class="text-success"></i> Ramp Statement (.xlsx)
+                  </button>
+                  <button class="btn btn-outline" onclick="injectSample('docx')">
+                    <i data-lucide="file" class="text-info"></i> SaaS Contract (.docx)
+                  </button>
+                </div>
+                
+                <h4 style="margin-top: 16px;"><i data-lucide="download-cloud" class="text-success" style="width: 14px; height: 14px; vertical-align: middle;"></i> Client Demo Download Pack</h4>
+                <div class="stream-buttons">
+                  <a class="btn btn-outline" href="samples/invoice_adobe.eml" download="invoice_adobe.eml" style="font-size:0.75rem; padding: 8px 10px;">
+                    <i data-lucide="download" class="text-primary"></i> EML Sample
+                  </a>
+                  <a class="btn btn-outline" href="samples/invoice_aws.txt" download="invoice_aws.txt" style="font-size:0.75rem; padding: 8px 10px;">
+                    <i data-lucide="download" class="text-danger"></i> PDF Text Sample
+                  </a>
+                  <a class="btn btn-outline" href="samples/ramp_statement.csv" download="ramp_statement.csv" style="font-size:0.75rem; padding: 8px 10px;">
+                    <i data-lucide="download" class="text-success"></i> Excel CSV Sample
+                  </a>
+                  <a class="btn btn-outline" href="samples/contract_slack.txt" download="contract_slack.txt" style="font-size:0.75rem; padding: 8px 10px;">
+                    <i data-lucide="download" class="text-info"></i> Word Text Sample
+                  </a>
+                  <a class="btn btn-outline" href="samples/uber_receipt.txt" download="uber_receipt.txt" style="font-size:0.75rem; padding: 8px 10px;">
+                    <i data-lucide="download" class="text-warning"></i> Uber Receipt
+                  </a>
+                  <a class="btn btn-outline" href="samples/mckinsey_contract.txt" download="mckinsey_contract.txt" style="font-size:0.75rem; padding: 8px 10px;">
+                    <i data-lucide="download" class="text-muted"></i> McKinsey Contract
+                  </a>
+                </div>
+                <div style="margin-top: 10px;">
+                  <button class="btn btn-success btn-full-width" id="btn-download-all-samples" style="font-size:0.8rem; padding: 10px 14px;" onclick="downloadAllSamples()">
+                    <i data-lucide="package"></i> Download All Samples (Combined Pack)
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- QA Control Toolbar -->
+          <div class="qa-toolbar bg-glass">
+            <div class="toolbar-left">
+              <div class="search-box">
+                <i data-lucide="search"></i>
+                <input type="text" id="qa-search" placeholder="Filter merchant, status, anomalies...">
+              </div>
+              <select id="qa-filter-anomaly" class="form-select">
+                <option value="all">All Records</option>
+                <option value="anomalies">Anomalies Only</option>
+                <option value="cleaned">Cleaned Records</option>
+                <option value="synced">Synced to ERP</option>
+              </select>
+            </div>
+            
+            <div class="toolbar-right">
+              <button class="btn btn-success" id="btn-sync-all">
+                <i data-lucide="refresh-cw"></i> Sync Approved to ERP
+              </button>
+            </div>
+          </div>
+
+          <!-- Responsive Data QA Grid -->
+          <div class="data-grid-container bg-glass">
+            <table class="data-table" id="qa-table">
+              <thead>
+                <tr>
+                  <th width="40"><input type="checkbox" id="select-all-transactions"></th>
+                  <th>Vendor / Merchant</th>
+                  <th>Amount</th>
+                  <th>Date</th>
+                  <th>Category (GAAP)</th>
+                  <th>QA Status</th>
+                  <th>ERP Target</th>
+                  <th width="100">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="qa-tbody">
+                <!-- Injected via JavaScript -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Quality Correction Guide Card -->
+          <div class="insights-panel bg-glass" style="margin-top: 24px; border-left: 4px solid var(--warning);">
+            <h3 style="font-size: 1.05rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;"><i data-lucide="book-open" class="text-warning"></i> Audit Guide: How to Correct Anomalies & Boost QA Pass Rate</h3>
+            <div style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); display: grid; gap: 16px;">
+              <div style="background: rgba(255,255,255,0.02); padding: 12px; border-radius: 8px; display: flex; gap: 10px; font-size: 0.82rem;">
+                <i data-lucide="edit-3" class="text-info" style="flex-shrink:0; width: 18px; height: 18px;"></i>
+                <span><strong>1. Edit Raw Extractions:</strong> Double-click on any cell in the grid (e.g. Amount, Vendor, or Date) to type the correct details and hit Enter. The AI pipeline will instantly re-evaluate the row.</span>
+              </div>
+              <div style="background: rgba(255,255,255,0.02); padding: 12px; border-radius: 8px; display: flex; gap: 10px; font-size: 0.82rem;">
+                <i data-lucide="tag" class="text-success" style="flex-shrink:0; width: 18px; height: 18px;"></i>
+                <span><strong>2. Align Mappings:</strong> If a vendor triggers a "GL Mapping Conflict", double-click the **Category** cell and choose the correct ledger alignment (e.g. change Adobe category to <em>Software (SaaS)</em>).</span>
+              </div>
+              <div style="background: rgba(255,255,255,0.02); padding: 12px; border-radius: 8px; display: flex; gap: 10px; font-size: 0.82rem;">
+                <i data-lucide="trash-2" class="text-danger" style="flex-shrink:0; width: 18px; height: 18px;"></i>
+                <span><strong>3. Remove Duplicates:</strong> If a duplicate error is shown, select the redundant row and click the Trash icon to remove it, raising the overall Quality Pass Rate.</span>
+              </div>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- SECTION 3: REGEX & CLEANING CENTER -->
+        <section id="clean-section" class="view-pane">
+          <div class="clean-container">
+            <!-- Left Panel: Custom Regex Rules Configuration -->
+            <div class="clean-rules-card bg-glass">
+              <h3><i data-lucide="sliders" class="text-primary"></i> Normalization Pipelines</h3>
+              <p class="text-muted text-sm">Select and test regular expression pipelines applied during ingestion.</p>
+              
+              <div class="regex-rules-list">
+                <div class="rule-item active" data-rule="currency">
+                  <div class="rule-meta">
+                    <span class="rule-title">Currency Standardizer</span>
+                    <span class="rule-badge">Regex</span>
+                  </div>
+                  <p class="rule-desc">Extracts float values, converts formats: e.g., <code>$ 1.250,50</code> -> <code>1250.50</code></p>
+                  <code class="rule-regex">/[$,\s]/g -> format float</code>
+                </div>
+
+                <div class="rule-item" data-rule="merchant">
+                  <div class="rule-meta">
+                    <span class="rule-title">Vendor Name Cleaner</span>
+                    <span class="rule-badge">Heuristic</span>
+                  </div>
+                  <p class="rule-desc">Strips inc, corp, llc, extra transaction trailing codes from vendor names.</p>
+                  <code class="rule-regex">/(\s+ltd|\s+inc|\s+llc|\s+corp|#\d+)/gi</code>
+                </div>
+
+                <div class="rule-item" data-rule="date">
+                  <div class="rule-meta">
+                    <span class="rule-title">Date Normalizer</span>
+                    <span class="rule-badge">Regex</span>
+                  </div>
+                  <p class="rule-desc">Parses multiple regional formats (DD/MM/YYYY, MM-DD-YY) into standardized ISO format.</p>
+                  <code class="rule-regex">/(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{2,4})/</code>
+                </div>
+              </div>
+
+              <!-- Rule Sandbox -->
+              <div class="sandbox-area">
+                <h4>Interactive Rule Tester</h4>
+                <div class="form-group">
+                  <label>Raw String Input</label>
+                  <input type="text" id="sandbox-input" class="form-input" value="AMAZON MKTPLACE *4A95D  $   1,250.50 USD">
+                </div>
+                <div class="sandbox-actions">
+                  <button class="btn btn-sm btn-primary" onclick="testRegex()">Apply Normalizer</button>
+                </div>
+                <div class="sandbox-output">
+                  <p>Normalized Output:</p>
+                  <code id="sandbox-output-text">Amazon Marketplace | $1250.50</code>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Panel: Raw vs Cleaned Text Stream Viewer -->
+            <div class="clean-viewer-card bg-glass">
+              <h3><i data-lucide="terminal" class="text-success"></i> Ingestion In-Depth QA Inspector</h3>
+              <p class="text-muted text-sm">Compare raw documents with the NLP tokenized structure.</p>
+              
+              <div class="doc-inspector-panels">
+                <div class="panel-box">
+                  <div class="panel-box-header">
+                    <span>Raw Document Chunk</span>
+                    <span id="doc-type-badge" class="badge">EML Raw</span>
+                  </div>
+                  <textarea id="raw-chunk-text" readonly class="text-editor-raw">
+Subject: Expense Receipt: Adobe CC Subscription - Invoice #INV-109283
+Date: May 28, 2026 at 09:44:00 AM EDT
+From: "Adobe Billing Services" <billing-noreply@adobe.com>
+To: "Finance Operations Team" <finops@corp.com>
+
+Thank you for your purchase. Details of your recurring subscription charge are below.
+Merchant: ADOBE SYSTEMS INCORPORATED.
+Product: Adobe Creative Cloud Suite Enterprise
+Amount: 1899.99 USD
+Payment: Visa ending in *4221
+Billing ID: ADOBE-993-2882
+                  </textarea>
+                </div>
+
+                <div class="panel-box">
+                  <div class="panel-box-header">
+                    <span>Extracted NLP Entity JSON</span>
+                    <span class="badge badge-success">Valid Schema</span>
+                  </div>
+                  <pre id="json-parsed-text" class="text-editor-json">
+{
+  "vendor": "Adobe Systems Inc.",
+  "amount": 1899.99,
+  "currency": "USD",
+  "date": "2026-05-28",
+  "category": "Software (SaaS)",
+  "payment_method": "Visa (*4221)",
+  "invoice_id": "INV-109283",
+  "qa_flags": {
+    "is_duplicate": false,
+    "amount_limit_exceeded": false,
+    "erp_mapping_conflict": true
+  }
+}
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 4: ERP INTEGRATIONS -->
+        <section id="erp-section" class="view-pane">
+          <div class="erp-grid">
+            <!-- ERP Setup card -->
+            <div class="erp-setup-card bg-glass">
+              <h3><i data-lucide="refresh-cw" class="text-primary"></i> Active Connectors</h3>
+              <p class="text-muted text-sm">Configure mappings and compliance controls for General Ledger matching.</p>
+              
+              <div class="connector-list">
+                <div class="connector-item active" data-connector="netsuite">
+                  <div class="connector-meta">
+                    <img src="https://img.icons8.com/color/48/oracle.png" alt="NetSuite Logo" class="erp-logo-img" onerror="this.src='https://placehold.co/40x40?text=NS'">
+                    <div>
+                      <p class="conn-name">Oracle NetSuite ERP</p>
+                      <p class="conn-status text-success"><span class="dot bg-success"></span> Connected & Active</p>
+                    </div>
+                  </div>
+                  <div class="conn-settings">
+                    <span class="badge">GAAP Compliant</span>
+                    <span class="badge">GL Code Auto-Match</span>
+                  </div>
+                </div>
+
+                <div class="connector-item" data-connector="ramp">
+                  <div class="connector-meta">
+                    <i data-lucide="credit-card" class="erp-icon text-success"></i>
+                    <div>
+                      <p class="conn-name">Ramp Expense Management</p>
+                      <p class="conn-status text-success"><span class="dot bg-success"></span> Syncing Real-time</p>
+                    </div>
+                  </div>
+                  <div class="conn-settings">
+                    <span class="badge">Card Controls</span>
+                    <span class="badge">Auto-Categorization</span>
+                  </div>
+                </div>
+
+                <div class="connector-item" data-connector="qbo">
+                  <div class="connector-meta">
+                    <i data-lucide="book-open" class="erp-icon text-warning"></i>
+                    <div>
+                      <p class="conn-name">QuickBooks Online (QBO)</p>
+                      <p class="conn-status text-muted"><span class="dot bg-muted"></span> Standby / Configured</p>
+                    </div>
+                  </div>
+                  <div class="conn-settings">
+                    <span class="badge">SME Chart Accounts</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- General GAAP & Security Settings -->
+              <div class="gaap-settings bg-glass-dark">
+                <h4>Security & Financial Controls</h4>
+                <div class="control-toggle">
+                  <div>
+                    <p class="control-title">Double-Entry Balance Verification</p>
+                    <p class="control-desc">Validate all transactions balance to offsetting liability account.</p>
+                  </div>
+                  <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                  </label>
+                </div>
+
+                <div class="control-toggle">
+                  <div>
+                    <p class="control-title">AES-256 Payload Encryption</p>
+                    <p class="control-desc">Encrypt API feeds sent to external NetSuite/Ramp nodes.</p>
+                  </div>
+                  <label class="switch">
+                    <input type="checkbox" checked disabled>
+                    <span class="slider disabled"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mapping visual tool -->
+            <div class="erp-mapping-card bg-glass">
+              <h3><i data-lucide="git-branch" class="text-success"></i> Chart of Accounts Mapping Rules</h3>
+              <p class="text-muted text-sm">Define how categories extracted by NLP map to your ERP General Ledger Codes.</p>
+              
+              <div class="mapping-table-wrapper">
+                <table class="mapping-table">
+                  <thead>
+                    <tr>
+                      <th>Normalized Category</th>
+                      <th>ERP GL Code (NetSuite)</th>
+                      <th>QuickBooks Mapping</th>
+                      <th>Auto-Match Integrity</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>Software (SaaS)</strong></td>
+                      <td><code>6120 - SaaS Licenses</code></td>
+                      <td><code>Expense: SaaS Tools</code></td>
+                      <td><span class="badge badge-success">High (98%)</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Travel & Meals</strong></td>
+                      <td><code>6340 - T&E Travel</code></td>
+                      <td><code>Expense: Travel Expenses</code></td>
+                      <td><span class="badge badge-success">High (95%)</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Office Supplies</strong></td>
+                      <td><code>6050 - Office Supplies</code></td>
+                      <td><code>Expense: Supplies</code></td>
+                      <td><span class="badge badge-warning">Medium (80%)</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Utilities / Infrastructure</strong></td>
+                      <td><code>6150 - AWS Cloud Spend</code></td>
+                      <td><code>Expense: Utilities</code></td>
+                      <td><span class="badge badge-success">High (97%)</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Consulting & Legal</strong></td>
+                      <td><code>6090 - Professional Svcs</code></td>
+                      <td><code>Expense: Legal fees</code></td>
+                      <td><span class="badge badge-danger">Manual Review</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 5: PREMIUM REPORTS -->
+        <section id="report-section" class="view-pane">
+          <div class="report-container">
+            <!-- Left panel: Report configurations and Analyst notes -->
+            <div class="report-config-card bg-glass">
+              <h3><i data-lucide="file-cog" class="text-primary"></i> Premium Report Designer</h3>
+              <p class="text-muted text-sm">Configure fields and write annotations before generating the official PDF document.</p>
+              
+              <div class="form-group">
+                <label for="report-title-input">Report Title</label>
+                <input type="text" id="report-title-input" class="form-input" value="Data Quality Audit & Financial Verification Report">
+              </div>
+
+              <div class="form-group">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                  <label for="analyst-notes" style="margin-bottom: 0;">Editable Analyst Notes (Injected into PDF as editable forms)</label>
+                  <button class="btn btn-outline btn-sm" id="btn-sync-notes" type="button" style="font-size: 0.72rem; padding: 4px 8px;">
+                    <i data-lucide="sparkles" style="width: 12px; height: 12px;"></i> Auto-Generate Summary Notes
+                  </button>
+                </div>
+                <textarea id="analyst-notes" class="form-input text-editor-notes" rows="6" placeholder="Type executive summary notes or audit commentary here. The PDF output will contain this text and support direct edits in any PDF reader.">All transaction streams for this period have been ingested, cleaned, and reconciled. Total value checked equals $342,850.50 with a QA pass rate of 94.8%. 
+Three anomalies were flagged (including an Amazon duplicates check and an Adobe Systems GL code conflict), which have been held back from ERP syncing pending direct manager review. Other transactions match GAAP guidelines and are cleared for NetSuite ledger import.
+                </textarea>
+              </div>
+
+              <div class="form-group-checkboxes">
+                <label class="checkbox-label">
+                  <input type="checkbox" id="inc-anomalies" checked> Include detailed anomaly logs
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" id="inc-charts" checked> Include trend charts in PDF
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" id="inc-erp-logs" checked> Include ERP NetSuite sync report
+                </label>
+              </div>
+
+              <button class="btn btn-lg btn-primary btn-full-width" id="btn-generate-pdf">
+                <i data-lucide="file-down"></i> Generate & Download Premium PDF
+              </button>
+            </div>
+
+            <!-- Right panel: Interactive PDF mock preview -->
+            <div class="report-preview-card bg-glass">
+              <div class="preview-header">
+                <h3><i data-lucide="eye" class="text-success"></i> Premium PDF Interactive Preview</h3>
+                <span class="badge badge-success">Premium Layout</span>
+              </div>
+              
+              <div class="pdf-document-paper" id="pdf-paper-preview" style="max-height: 720px; overflow-y: auto;">
+                <div class="pdf-header">
+                  <div class="pdf-header-left">
+                    <h1 id="pdf-preview-title">Data Quality Audit &amp; Financial Verification Report</h1>
+                    <p class="pdf-meta-p">Cycle: FY26 Q2 | Date: June 4, 2026 | Auditor: Lead Auditor</p>
+                  </div>
+                  <div class="pdf-header-right">
+                    <span class="pdf-logo-text"><i data-lucide="shield-check"></i> QA PRO</span>
+                  </div>
+                </div>
+
+                <div class="pdf-divider"></div>
+
+                <!-- KPI Stat Boxes -->
+                <div class="pdf-stats-row">
+                  <div class="pdf-stat-box">
+                    <span class="pdf-stat-lbl">AUDITED VALUE</span>
+                    <span class="pdf-stat-num" id="pdf-preview-val-sum">$342,850.50</span>
+                  </div>
+                  <div class="pdf-stat-box">
+                    <span class="pdf-stat-lbl">QA PASS RATE</span>
+                    <span class="pdf-stat-num text-success" id="pdf-preview-pass-rate">94.8%</span>
+                  </div>
+                  <div class="pdf-stat-box">
+                    <span class="pdf-stat-lbl">ANOMALIES</span>
+                    <span class="pdf-stat-num text-danger" id="pdf-preview-anomalies">3</span>
+                  </div>
+                  <div class="pdf-stat-box">
+                    <span class="pdf-stat-lbl">SYNCED TO ERP</span>
+                    <span class="pdf-stat-num text-success" id="pdf-preview-synced">42</span>
+                  </div>
+                </div>
+
+                <!-- Section 1: Executive Summary & Analyst Notes -->
+                <div class="pdf-section">
+                  <h4 class="pdf-sec-title">1. Executive Summary &amp; Analyst Notes</h4>
+                  <div class="pdf-notes-preview" id="pdf-preview-notes-content">
+                    <!-- Synced dynamically from notes textarea -->
+                  </div>
+                </div>
+
+                <!-- Section 2: Chart Preview Area -->
+                <div class="pdf-section">
+                  <h4 class="pdf-sec-title">2. Trend Charts &amp; Visual Analytics</h4>
+                  <div id="preview-chart-area" style="min-height: 120px; background: rgba(0,0,0,0.04); border-radius: 8px; display: flex; align-items: center; justify-content: center; padding: 24px; margin-bottom: 8px; border: 1px dashed rgba(128,128,128,0.3);">
+                    <span style="color: #888; font-size: 0.82rem;"><i data-lucide="bar-chart-3" style="width:16px; height:16px; vertical-align:middle;"></i> Chart images will be rendered here during PDF generation</span>
+                  </div>
+                </div>
+
+                <!-- Section 3: Full Transaction Table -->
+                <div class="pdf-section">
+                  <h4 class="pdf-sec-title">3. Ingested &amp; Cleared Transactions (GAAP mapped)</h4>
+                  <table class="pdf-preview-table">
+                    <thead>
+                      <tr>
+                        <th>Vendor</th>
+                        <th>Amount</th>
+                        <th>Date</th>
+                        <th>GAAP Category</th>
+                        <th>ERP</th>
+                      </tr>
+                    </thead>
+                    <tbody id="pdf-preview-table-body">
+                      <!-- Synced dynamically -->
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- Section 4: Anomaly Breakdown -->
+                <div class="pdf-section">
+                  <h4 class="pdf-sec-title">4. Anomaly Breakdown</h4>
+                  <div id="pdf-preview-anomaly-breakdown" style="font-size: 0.82rem; line-height: 1.7;">
+                    <div style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 8px; padding: 8px; background: rgba(255,59,48,0.06); border-radius: 6px; border-left: 3px solid #ff3b30;">
+                      <strong style="min-width: 20px; color: #ff3b30;">⚠</strong>
+                      <span><strong>Amazon Marketplace:</strong> Potential duplicate transaction detected — $2,450.00 on 2026-05-25 matches existing record. Held for review.</span>
+                    </div>
+                    <div style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 8px; padding: 8px; background: rgba(255,59,48,0.06); border-radius: 6px; border-left: 3px solid #ff3b30;">
+                      <strong style="min-width: 20px; color: #ff3b30;">⚠</strong>
+                      <span><strong>Adobe Systems Inc.:</strong> GL Mapping Conflict — Ramp reports GL 6130 (SaaS Services) vs NetSuite GL 6120 (Licenses). Manual alignment required.</span>
+                    </div>
+                    <div style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 8px; padding: 8px; background: rgba(255,149,0,0.06); border-radius: 6px; border-left: 3px solid #ff9500;">
+                      <strong style="min-width: 20px; color: #ff9500;">⚡</strong>
+                      <span><strong>WeWork Membership:</strong> Amount exceeds per-transaction approval threshold ($5,000). Pending manager sign-off.</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Section 5: Quality Improvement Recommendations -->
+                <div class="pdf-section">
+                  <h4 class="pdf-sec-title">5. Quality Improvement Recommendations</h4>
+                  <div id="pdf-preview-recommendations" style="font-size: 0.82rem; line-height: 1.7;">
+                    <div style="padding: 8px 10px; background: rgba(52,199,89,0.06); border-radius: 6px; margin-bottom: 6px; border-left: 3px solid #34c759;">
+                      <strong>✓ Standardize GL Code Mapping:</strong> Align Adobe vendor entry across Ramp and NetSuite to eliminate recurring mapping conflicts. Estimated impact: +2.1% pass rate.
+                    </div>
+                    <div style="padding: 8px 10px; background: rgba(52,199,89,0.06); border-radius: 6px; margin-bottom: 6px; border-left: 3px solid #34c759;">
+                      <strong>✓ Implement Duplicate Detection Rules:</strong> Add fuzzy-match deduplication for Amazon Marketplace transactions to flag repeats within 48-hour windows.
+                    </div>
+                    <div style="padding: 8px 10px; background: rgba(52,199,89,0.06); border-radius: 6px; margin-bottom: 6px; border-left: 3px solid #34c759;">
+                      <strong>✓ Auto-Escalation Threshold:</strong> Configure auto-escalation for transactions above $5,000 to reduce manual queue bottlenecks by ~35%.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Section 6: ERP Integration Status -->
+                <div class="pdf-section">
+                  <h4 class="pdf-sec-title">6. ERP Integration Status</h4>
+                  <div id="pdf-preview-erp-status" style="font-size: 0.82rem;">
+                    <table class="pdf-preview-table">
+                      <thead>
+                        <tr>
+                          <th>ERP System</th>
+                          <th>Status</th>
+                          <th>Synced Records</th>
+                          <th>Last Sync</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Oracle NetSuite</td>
+                          <td><span style="color: #34c759; font-weight: 600;">● Connected</span></td>
+                          <td>38</td>
+                          <td>June 4, 2026 11:22 AM</td>
+                        </tr>
+                        <tr>
+                          <td>Ramp Expense Mgmt</td>
+                          <td><span style="color: #34c759; font-weight: 600;">● Syncing</span></td>
+                          <td>42</td>
+                          <td>June 4, 2026 11:25 AM</td>
+                        </tr>
+                        <tr>
+                          <td>QuickBooks Online</td>
+                          <td><span style="color: #888; font-weight: 600;">● Standby</span></td>
+                          <td>—</td>
+                          <td>N/A</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <!-- Section 7: Chart of Accounts Mapping Preview -->
+                <div class="pdf-section">
+                  <h4 class="pdf-sec-title">7. Chart of Accounts Mapping</h4>
+                  <div id="pdf-preview-coa-mapping" style="font-size: 0.82rem;">
+                    <table class="pdf-preview-table">
+                      <thead>
+                        <tr>
+                          <th>Category</th>
+                          <th>GL Code (NetSuite)</th>
+                          <th>QBO Mapping</th>
+                          <th>Integrity</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Software (SaaS)</td>
+                          <td>6120 - SaaS Licenses</td>
+                          <td>Expense: SaaS Tools</td>
+                          <td><span style="color: #34c759; font-weight: 600;">High (98%)</span></td>
+                        </tr>
+                        <tr>
+                          <td>Travel &amp; Meals</td>
+                          <td>6340 - T&amp;E Travel</td>
+                          <td>Expense: Travel Expenses</td>
+                          <td><span style="color: #34c759; font-weight: 600;">High (95%)</span></td>
+                        </tr>
+                        <tr>
+                          <td>Office Supplies</td>
+                          <td>6050 - Office Supplies</td>
+                          <td>Expense: Supplies</td>
+                          <td><span style="color: #ff9500; font-weight: 600;">Medium (80%)</span></td>
+                        </tr>
+                        <tr>
+                          <td>Utilities / Infra</td>
+                          <td>6150 - AWS Cloud Spend</td>
+                          <td>Expense: Utilities</td>
+                          <td><span style="color: #34c759; font-weight: 600;">High (97%)</span></td>
+                        </tr>
+                        <tr>
+                          <td>Consulting &amp; Legal</td>
+                          <td>6090 - Professional Svcs</td>
+                          <td>Expense: Legal fees</td>
+                          <td><span style="color: #ff3b30; font-weight: 600;">Manual Review</span></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <div class="pdf-footer">
+                  <span>Confidential | Data QA Associate Pro Dashboard System</span>
+                  <span>Page 1 of 3</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Toast Notification System -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Javascript File -->
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+AMAZON WEB SERVICES (AWS)
+Invoice Number: AWS-0092839281
+Invoice Date: 06/01/2026
+Due Date: 07/01/2026
+
+Customer Account: 9283-9182-9382
+Billing Address: Finance Operations Corp
+
+Description:
+AWS EC2 Cloud Compute Services - May 2026: $12,500.00
+AWS S3 Standard Storage Services - May 2026: $2,350.00
+
+TOTAL DUE: $ 14,850.00 USD
+Tax: $0.00
+Payment status: PENDING LEDGER SYNC (NetSuite Target GL-6150)

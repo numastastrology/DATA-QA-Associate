@@ -1,0 +1,5 @@
+TransactionID,Date,Merchant,Amount,Category,ERP Target,Status
+TXN-9021,05/24/2026,"AMAZON.COM*MKTPL US   WA#123",1250.50,Office Supplies,NetSuite,Cleaned
+TXN-9023,05-29-2026,"UBER   *TRIP G2H91   $45.20",45.20,Travel & Meals,Ramp,Cleared
+TXN-9025,05/24/2026,"AMAZON.COM*MKTPL US   WA#123",1250.50,Office Supplies,NetSuite,Anomaly
+TXN-9027,06/03/2026,"OFFICE DEPOT #229381",450.25,Office Supplies,QuickBooks Online,Ready

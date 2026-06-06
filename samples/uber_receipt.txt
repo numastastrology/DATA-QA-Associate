@@ -1,0 +1,19 @@
+Uber Technologies, Inc.
+Trip Receipt
+================================
+Trip ID: G2H91-CORP
+Date: May 29, 2026
+Pickup: 350 5th Ave, New York, NY 10118
+Dropoff: JFK International Airport, Terminal 4
+Distance: 18.4 miles
+Duration: 42 min
+================================
+Base Fare:        $32.50
+Service Fee:       $4.88
+Tolls:             $7.82
+--------------------------------
+Total:            $45.20
+Payment: Ramp Corporate Card *1102
+Expense Code: T&E-2026-0529
+================================
+Thank you for riding with Uber for Business.

@@ -1,0 +1,7 @@
+TXN: TXN-9021
+REF: AMAZON.COM*MKTPL US WA#123
+DATE: 05/24/2026
+AMT: $ 1,250.50 USD
+CARD: Visa 9982
+ITEMS: Office Chairs, Stationery, Printer Paper.
+AUTHENTICATION: Secured with OAuth.

@@ -1,0 +1,37 @@
+PROFESSIONAL SERVICES AGREEMENT
+================================
+Parties:
+  Client: [Your Company Name]
+  Provider: McKinsey & Company, Inc.
+
+Effective Date: May 15, 2026
+Contract ID: MSA-2026-04892
+
+Scope of Work:
+  Strategic consulting engagement for Q2-Q3 2026
+  covering digital transformation initiatives,
+  organizational restructuring advisory, and
+  technology stack modernization roadmap.
+
+Engagement Details:
+  Lead Partner: Senior Partner, NY Office
+  Team Size: 4 consultants
+  Duration: 12 weeks
+
+Financial Terms:
+  Retainer Payment: $25,000.00 USD
+  Monthly Billing: Net 30
+  Payment Method: Wire Transfer / ACH
+  GL Account: 6090 - Professional Services
+  ERP Target: Oracle NetSuite
+
+Compliance:
+  SOC 2 Type II Certified
+  GDPR Compliant Data Handling
+  NDA Reference: NDA-2026-MC-1102
+
+Authorized Signatures:
+  Client: ___________________
+  Provider: ___________________
+  Date: ___________________
+================================

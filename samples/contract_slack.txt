@@ -1,0 +1,15 @@
+SLACK TECHNOLOGIES, INC.
+SOFTWARE AS A SERVICE (SAAS) RENEWAL AGREEMENT
+ORDER REFERENCE: SLK-99283-26
+
+Customer: Finance Operations Team (Corp)
+Effective Date: June 2, 2026
+
+Subscription Plan: Slack Enterprise Grid
+Number of Seats: 150
+Subscription Term: 12 Months
+Billing Cycle: Annual Pre-pay
+
+Total Renewal Retainer Fee: $3,450.00 USD
+Payment details: To be billed under corporate card ending in *1102.
+Target GL Mapping: SaaS Services Account 6120.
