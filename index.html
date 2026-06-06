@@ -16,6 +16,14 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Tesseract.js for OCR -->
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+  <!-- docx.js for Word document generation -->
+  <script src="https://cdn.jsdelivr.net/npm/docx@8.5.0/build/index.js"></script>
+  <!-- SheetJS for reading Excel/CSV uploads -->
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <!-- FileSaver.js for reliable downloads -->
+  <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js"></script>
 </head>
 <body class="dark-mode">
   <div class="app-container">
@@ -52,6 +60,10 @@
         <button class="nav-item" data-target="report-section">
           <i data-lucide="file-text"></i>
           <span>Premium Reports</span>
+        </button>
+        <button class="nav-item" data-target="data-entry-section">
+          <i data-lucide="keyboard"></i>
+          <span>Data Typing & Entry</span>
         </button>
       </nav>
       
@@ -121,6 +133,10 @@
         <button class="mobile-nav-item" data-target="report-section">
           <i data-lucide="file-text"></i>
           <span>Report</span>
+        </button>
+        <button class="mobile-nav-item" data-target="data-entry-section">
+          <i data-lucide="keyboard"></i>
+          <span>Typing</span>
         </button>
       </nav>
 
@@ -796,7 +812,7 @@ Three anomalies were flagged (including an Amazon duplicates check and an Adobe 
                           <td>Expense: Supplies</td>
                           <td><span style="color: #ff9500; font-weight: 600;">Medium (80%)</span></td>
                         </tr>
-                        <tr>
+<tr>
                           <td>Utilities / Infra</td>
                           <td>6150 - AWS Cloud Spend</td>
                           <td>Expense: Utilities</td>
@@ -812,7 +828,7 @@ Three anomalies were flagged (including an Amazon duplicates check and an Adobe 
                     </table>
                   </div>
                 </div>
-
+                
                 <div class="pdf-footer">
                   <span>Confidential | Data QA Associate Pro Dashboard System</span>
                   <span>Page 1 of 3</span>
@@ -822,8 +838,691 @@ Three anomalies were flagged (including an Amazon duplicates check and an Adobe 
           </div>
         </section>
 
+        <!-- SECTION 6: DATA TYPING & ENTRY (NEW MODULE) -->
+        <section id="data-entry-section" class="view-pane">
+          <div class="kpi-grid" style="margin-bottom: 24px;">
+            <div class="kpi-card bg-glass">
+              <div class="kpi-header">
+                <span class="kpi-title">Typing Accuracy</span>
+                <i data-lucide="check-circle" class="kpi-icon text-success"></i>
+              </div>
+              <p class="kpi-value text-success">99.8%</p>
+              <span class="kpi-trend text-success"><i data-lucide="trending-up"></i> Premium Quality</span>
+            </div>
+            <div class="kpi-card bg-glass">
+              <div class="kpi-header">
+                <span class="kpi-title">Completed Demos</span>
+                <i data-lucide="folder-check" class="kpi-icon text-primary"></i>
+              </div>
+              <p class="kpi-value" id="demo-completed-count">0 / 5</p>
+              <span class="kpi-trend text-muted"><i data-lucide="clock"></i> Active Session</span>
+            </div>
+          </div>
+
+          <div class="insights-panel bg-glass" style="margin-bottom: 24px; border-left: 4px solid var(--primary);">
+            <h3 style="font-size: 1.05rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;"><i data-lucide="layers" class="text-primary"></i> 5 Premium Demo Projects</h3>
+            <p style="font-size: 0.9rem; color: var(--text-secondary);">Execute comprehensive digital archiving, document conversion, and precise data formatting from an independent workspace.</p>
+          </div>
+
+            <!-- ===== DEMO 1 ===== -->
+            <div class="erp-setup-card bg-glass demo-showcase-card" id="demo-1-card">
+              <div class="demo-card-header">
+                <div>
+                  <h3><i data-lucide="file-text" class="text-info"></i> Demo 1: Image / PDF → Word / Text / PDF Conversion</h3>
+                  <p class="text-muted text-sm">Convert scanned manuscript images or PDFs directly into clean editable documents.</p>
+                </div>
+                <span class="badge badge-info">Document Typing</span>
+              </div>
+
+              <!-- Sample IO Row -->
+              <div class="sample-io-grid">
+                <div class="sample-box sample-input">
+                  <div class="sample-box-label"><i data-lucide="image" style="width:13px;height:13px;"></i> Sample Input &nbsp;—&nbsp; Astrologer_Partnership_Agreement.jpg</div>
+                  <div class="sample-scroll-area">
+                    <p class="spv bold-line">7. INTELLECTUAL PROPERTY</p>
+                    <p class="spv">Any content created by the Astrologer specifically for the Astro Soul Path Platform (written reports, recorded sessions with customer consent, customised horoscopes, video content) shall be jointly owned by the Astrologer and Astro Soul Path Private Limited unless otherwise agreed in writing.</p>
+                    <p class="spv">The Astrologer retains ownership of their general astrological methodology, teaching materials, and content created independently outside the Platform. Astro Soul Path Private Limited retains ownership of its technology, brand, trademarks, and Platform infrastructure.</p>
+                    <p class="spv bold-line">8. CONFIDENTIALITY & DATA PROTECTION</p>
+                    <p class="spv">The Astrologer agrees to keep confidential all customer personal data, session details, business information, and Platform operational data disclosed during the term of this Agreement and for 3 years thereafter.</p>
+                    <p class="spv">The Astrologer shall comply with the Information Technology Act, 2000, and applicable data protection norms, including the Digital Personal Data Protection Act, 2023. Customer data shall not be stored locally on the Astrologer's personal devices beyond session requirements.</p>
+                    <p class="spv bold-line">9. TERM & TERMINATION</p>
+                    <p class="spv">a) This Agreement is valid for 12 months from the Agreement Date and shall auto-renew unless either party provides 30 days' written notice of non-renewal.</p>
+                    <p class="spv">b) Either party may terminate this Agreement with 30 days' written notice without cause.</p>
+                    <p class="spv">c) Astro Soul Path Private Limited may terminate immediately (without notice) in cases of: fraud, misrepresentation of credentials, customer harassment, data breach, or material breach of this Agreement.</p>
+                    <p class="spv">d) Upon termination, any pending verified earnings shall be paid within 15 business days.</p>
+                    <p class="spv bold-line">10. DISPUTE RESOLUTION</p>
+                    <p class="spv">Any dispute arising out of or relating to this Agreement shall first be resolved through good-faith negotiation within 15 days of written notice. If unresolved, disputes shall be referred to arbitration under the Arbitration and Conciliation Act, 1996. Arbitration shall be conducted in Delhi, India, in the English language.</p>
+                    <p class="spv bold-line">11. REPRESENTATIONS & WARRANTIES</p>
+                    <p class="spv">The Astrologer represents and warrants that:</p>
+                    <p class="spv muted-line">• They are of legal age (18 years or above) and have the legal capacity to enter this Agreement.</p>
+                    <p class="spv muted-line">• All credentials, qualifications, and experience stated in their profile are accurate and verifiable.</p>
+                    <p class="spv muted-line">• They are not bound by any existing agreement that would conflict with this Agreement.</p>
+                    <p class="spv muted-line">• They hold a valid bank account in their own name for payment purposes.</p>
+                    <p class="spv muted-line">• They will obtain and maintain all necessary registrations (GST, professional licences) as applicable.</p>
+                  </div>
+                </div>
+                <div class="sample-arrow"><i data-lucide="arrow-right"></i></div>
+                <div class="sample-box sample-output">
+                  <div class="sample-box-label"><i data-lucide="file-check" style="width:13px;height:13px;"></i> Sample Output &nbsp;—&nbsp; <span class="output-format-tag">Word / TXT / PDF</span></div>
+                  <div class="sample-scroll-area">
+                    <p class="spv bold-line">7. INTELLECTUAL PROPERTY</p>
+                    <p class="spv">Any content created by the Astrologer specifically for the Astro Soul Path Platform (written reports, recorded sessions with customer consent, customised horoscopes, video content) shall be jointly owned by the Astrologer and Astro Soul Path Private Limited unless otherwise agreed in writing.</p>
+                    <p class="spv">The Astrologer retains ownership of their general astrological methodology, teaching materials, and content created independently outside the Platform. Astro Soul Path Private Limited retains ownership of its technology, brand, trademarks, and Platform infrastructure.</p>
+                    <p class="spv bold-line">8. CONFIDENTIALITY & DATA PROTECTION</p>
+                    <p class="spv">The Astrologer agrees to keep confidential all customer personal data, session details, business information, and Platform operational data disclosed during the term of this Agreement and for 3 years thereafter.</p>
+                    <p class="spv">The Astrologer shall comply with the Information Technology Act, 2000, and applicable data protection norms, including the Digital Personal Data Protection Act, 2023. Customer data shall not be stored locally on the Astrologer's personal devices beyond session requirements.</p>
+                    <p class="spv bold-line">9. TERM & TERMINATION</p>
+                    <p class="spv">a) This Agreement is valid for 12 months from the Agreement Date and shall auto-renew unless either party provides 30 days' written notice of non-renewal.</p>
+                    <p class="spv">b) Either party may terminate this Agreement with 30 days' written notice without cause.</p>
+                    <p class="spv">c) Astro Soul Path Private Limited may terminate immediately (without notice) in cases of: fraud, misrepresentation of credentials, customer harassment, data breach, or material breach of this Agreement.</p>
+                    <p class="spv">d) Upon termination, any pending verified earnings shall be paid within 15 business days.</p>
+                    <p class="spv bold-line">10. DISPUTE RESOLUTION</p>
+                    <p class="spv">Any dispute arising out of or relating to this Agreement shall first be resolved through good-faith negotiation within 15 days of written notice. If unresolved, disputes shall be referred to arbitration under the Arbitration and Conciliation Act, 1996. Arbitration shall be conducted in Delhi, India, in the English language.</p>
+                    <p class="spv bold-line">11. REPRESENTATIONS & WARRANTIES</p>
+                    <p class="spv">The Astrologer represents and warrants that:</p>
+                    <p class="spv muted-line">• They are of legal age (18 years or above) and have the legal capacity to enter this Agreement.</p>
+                    <p class="spv muted-line">• All credentials, qualifications, and experience stated in their profile are accurate and verifiable.</p>
+                    <p class="spv muted-line">• They are not bound by any existing agreement that would conflict with this Agreement.</p>
+                    <p class="spv muted-line">• They hold a valid bank account in their own name for payment purposes.</p>
+                    <p class="spv muted-line">• They will obtain and maintain all necessary registrations (GST, professional licences) as applicable.</p>
+                  </div>
+                  <div class="sample-stats">
+                    <i data-lucide="check-circle" style="width:11px;height:11px;color:#4ade80;"></i>
+                    Accuracy: 99.2% &nbsp;|&nbsp; Pages: 4 &nbsp;|&nbsp; Words: 1,240
+                    <button class="btn-dl" onclick="downloadRealFile('Astrologer_Partnership_Agreement.docx')"><i data-lucide="download" style="width:12px;height:12px;"></i> Download Sample</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Try It Yourself -->
+              <div class="try-it-section">
+                <div class="try-it-label"><i data-lucide="zap" style="width:14px;height:14px;color:#facc15;"></i> Try It Yourself — Upload Your Own File</div>
+                <div class="try-it-controls">
+                  <div class="form-group" style="flex:2;">
+                    <label>Upload Scanned Image or PDF</label>
+                    <input type="file" class="form-input" id="demo-1-file" accept="image/*,.pdf,.txt">
+                  </div>
+                  <div class="form-group" style="flex:1;">
+                    <label>Font</label>
+                    <select class="form-select" id="demo-1-font">
+                      <option>Arial</option><option>Times New Roman</option><option>Calibri</option>
+                    </select>
+                  </div>
+                  <div class="form-group" style="flex:1;">
+                    <label>Size</label>
+                    <select class="form-select" id="demo-1-size">
+                      <option>10 pt</option><option selected>11 pt</option><option>12 pt</option>
+                    </select>
+                  </div>
+                  <div class="form-group" style="flex:1;">
+                    <label>Output Format</label>
+                    <select class="form-select" id="demo-1-format">
+                      <option value="word">Word (.docx)</option>
+                      <option value="text">Text (.txt)</option>
+                      <option value="pdf">PDF (.pdf)</option>
+                    </select>
+                  </div>
+                </div>
+                <button class="btn btn-info" onclick="runDemoProject(1, this)"><i data-lucide="play"></i> Convert My Document</button>
+                <div class="demo-progress" id="demo-1-progress" style="display:none; margin-top:10px;">
+                  <div class="spinner"></div> <span id="demo-1-status">Processing your file...</span>
+                </div>
+                <div id="demo-1-output" class="output-preview-box" style="display:none;"></div>
+              </div>
+            </div>
+
+            <!-- ===== DEMO 2 ===== -->
+            <div class="erp-setup-card bg-glass demo-showcase-card" id="demo-2-card">
+              <div class="demo-card-header">
+                <div>
+                  <h3><i data-lucide="table" class="text-success"></i> Demo 2: PDF / Image → Spreadsheet Data Entry</h3>
+                  <p class="text-muted text-sm">Extract structured fields (Name, Title, Company, Address, Phone, Email) from any document into Excel/CSV.</p>
+                </div>
+                <span class="badge badge-success">Data Entry</span>
+              </div>
+
+              <div class="sample-io-grid">
+                <div class="sample-box sample-input">
+                  <div class="sample-box-label"><i data-lucide="file" style="width:13px;height:13px;"></i> Sample Input &nbsp;—&nbsp; Contact_Directory.pdf</div>
+                  <div class="sample-scroll-area">
+                    <p class="spv bold-line">Regional Sales Contact Directory — Q2 2026</p>
+                    <p class="spv">John Doe | Chief Executive Officer</p>
+                    <p class="spv muted-line">Acme Corp | 123 Main St, New York, NY 10001</p>
+                    <p class="spv muted-line">📞 (555) 010-0100 | ✉ jdoe@acmecorp.com | 🌐 www.acmecorp.com</p>
+                    <p class="spv" style="margin-top:6px;">Jane Smith | VP Marketing</p>
+                    <p class="spv muted-line">Tech Solutions Inc | 456 Market St, San Francisco, CA 94103</p>
+                    <p class="spv muted-line">📞 (555) 020-0200 | ✉ jsmith@techsol.io | 🌐 www.techsol.io</p>
+                    <p class="spv" style="margin-top:6px;">Bob Johnson | Director of Operations</p>
+                    <p class="spv muted-line">Global Finance Ltd | 789 Broad St, Chicago, IL 60601</p>
+                    <p class="spv muted-line">📞 (555) 030-0300 | ✉ bjohnson@gfinance.net</p>
+                    <p class="spv" style="margin-top:6px;">Alice Wang | Head of Procurement</p>
+                    <p class="spv muted-line">NovaTech Systems | 321 Silicon Ave, Austin, TX 78701</p>
+                    <p class="spv muted-line">📞 (555) 040-0400 | ✉ awang@novatech.io</p>
+                    <p class="spv italic-line">...46 more entries on subsequent pages</p>
+                  </div>
+                </div>
+                <div class="sample-arrow"><i data-lucide="arrow-right"></i></div>
+                <div class="sample-box sample-output">
+                  <div class="sample-box-label"><i data-lucide="file-check" style="width:13px;height:13px;"></i> Sample Output &nbsp;—&nbsp; <span class="output-format-tag">Excel / CSV</span></div>
+                  <div class="sample-scroll-area" style="overflow-x:auto;">
+                    <table class="mini-table" style="min-width:500px;">
+                      <thead><tr><th>#</th><th>Name</th><th>Title</th><th>Company</th><th>Address</th><th>Phone</th><th>Email</th></tr></thead>
+                      <tbody>
+                        <tr><td>1</td><td>John Doe</td><td>CEO</td><td>Acme Corp</td><td>123 Main St, NY</td><td>555-010-0100</td><td>jdoe@acmecorp.com</td></tr>
+                        <tr><td>2</td><td>Jane Smith</td><td>VP Marketing</td><td>Tech Solutions</td><td>456 Market St, CA</td><td>555-020-0200</td><td>jsmith@techsol.io</td></tr>
+                        <tr><td>3</td><td>Bob Johnson</td><td>Director Ops</td><td>Global Finance</td><td>789 Broad St, IL</td><td>555-030-0300</td><td>bjohnson@gfinance.net</td></tr>
+                        <tr><td>4</td><td>Alice Wang</td><td>Head Procurement</td><td>NovaTech</td><td>321 Silicon Ave, TX</td><td>555-040-0400</td><td>awang@novatech.io</td></tr>
+                        <tr><td colspan="7" class="italic-line">...46 more rows</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="sample-stats">
+                    <i data-lucide="check-circle" style="width:11px;height:11px;color:#4ade80;"></i>
+                    50 records &nbsp;|&nbsp; 7 columns &nbsp;|&nbsp; 0 errors
+                    <button class="btn-dl" onclick="downloadRealFile('Extracted_Contacts.csv')"><i data-lucide="download" style="width:12px;height:12px;"></i> Download Sample</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="try-it-section">
+                <div class="try-it-label"><i data-lucide="zap" style="width:14px;height:14px;color:#facc15;"></i> Try It Yourself — Upload Your File</div>
+                <div class="try-it-controls">
+                  <div class="form-group" style="flex:2;">
+                    <label>Upload PDF, Image, or CSV Contact List</label>
+                    <input type="file" class="form-input" id="demo-2-file" accept=".pdf,image/*,.csv,.txt,.xlsx">
+                  </div>
+                  <div class="form-group" style="flex:1;">
+                    <label>Output Format</label>
+                    <select class="form-select" id="demo-2-format">
+                      <option value="csv">CSV (.csv)</option>
+                      <option value="excel">Excel (.xlsx)</option>
+                    </select>
+                  </div>
+                </div>
+                <button class="btn btn-success" onclick="runDemoProject(2, this)"><i data-lucide="play"></i> Extract to Spreadsheet</button>
+                <div class="demo-progress" id="demo-2-progress" style="display:none; margin-top:10px;">
+                  <div class="spinner"></div> <span>Extracting structured fields from your file...</span>
+                </div>
+                <div id="demo-2-output" class="output-preview-box" style="display:none;"></div>
+              </div>
+            </div>
+
+            <!-- ===== DEMO 3 ===== -->
+            <div class="erp-setup-card bg-glass demo-showcase-card" id="demo-3-card">
+              <div class="demo-card-header">
+                <div>
+                  <h3><i data-lucide="globe" class="text-warning"></i> Demo 3: Web Scraping — Restaurant Business Meetings Data</h3>
+                  <p class="text-muted text-sm">Scrape TripAdvisor for restaurants good for business meetings in any city — Name, Website, Address, Phone, Email, Reviews.</p>
+                </div>
+                <span class="badge badge-warning">Web Scraping</span>
+              </div>
+
+              <div class="sample-io-grid">
+                <div class="sample-box sample-input">
+                  <div class="sample-box-label"><i data-lucide="link" style="width:13px;height:13px;"></i> Sample Input &nbsp;—&nbsp; tripadvisor.com</div>
+                  <div class="sample-scroll-area">
+                    <p class="spv bold-line">Scraping Parameters</p>
+                    <p class="spv">🌐 Source: TripAdvisor.com</p>
+                    <p class="spv">📍 Location: <strong>New York City, NY, USA</strong></p>
+                    <p class="spv">🏷 Tag Filter: "Good for Business Meetings"</p>
+                    <p class="spv">📋 Fields to Collect:</p>
+                    <p class="spv muted-line">• Restaurant Name &nbsp;• Website URL</p>
+                    <p class="spv muted-line">• Full Address &nbsp;• Phone Number</p>
+                    <p class="spv muted-line">• Email Address &nbsp;• Total Review Count</p>
+                    <p class="spv muted-line">• Cuisine Type &nbsp;• Price Range ($ to $$$$)</p>
+                    <p class="spv muted-line">• Average Rating &nbsp;• Ranking in City</p>
+                    <p class="spv">📦 Quantity Required: 20 restaurants</p>
+                    <p class="spv">📄 Output Format: Excel (.xlsx)</p>
+                  </div>
+                </div>
+                <div class="sample-arrow"><i data-lucide="arrow-right"></i></div>
+                <div class="sample-box sample-output">
+                  <div class="sample-box-label"><i data-lucide="file-check" style="width:13px;height:13px;"></i> Sample Output &nbsp;—&nbsp; <span class="output-format-tag">Excel / CSV</span></div>
+                  <div class="sample-scroll-area" style="overflow-x:auto;">
+                    <table class="mini-table" style="min-width:520px;">
+                      <thead><tr><th>#</th><th>Name</th><th>Phone</th><th>Rating</th><th>Reviews</th><th>Price</th><th>Cuisine</th></tr></thead>
+                      <tbody>
+                        <tr><td>1</td><td>Le Bernardin</td><td>212-554-1515</td><td>⭐ 4.8</td><td>3,450</td><td>$$$$</td><td>French, Seafood</td></tr>
+                        <tr><td>2</td><td>Daniel NYC</td><td>212-288-0033</td><td>⭐ 4.7</td><td>2,890</td><td>$$$$</td><td>French</td></tr>
+                        <tr><td>3</td><td>Gramercy Tavern</td><td>212-477-0777</td><td>⭐ 4.6</td><td>4,100</td><td>$$$</td><td>American</td></tr>
+                        <tr><td>4</td><td>Per Se</td><td>212-823-9335</td><td>⭐ 4.7</td><td>3,200</td><td>$$$$</td><td>American</td></tr>
+                        <tr><td>5</td><td>The Modern</td><td>212-333-1220</td><td>⭐ 4.5</td><td>2,100</td><td>$$$$</td><td>European</td></tr>
+                        <tr><td colspan="7" class="italic-line">...15 more rows (full 20 in download)</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="sample-stats">
+                    <i data-lucide="check-circle" style="width:11px;height:11px;color:#4ade80;"></i>
+                    20 restaurants &nbsp;|&nbsp; 10 columns &nbsp;|&nbsp; Verified data
+                    <button class="btn-dl" onclick="downloadRealFile('NYC_Meeting_Restaurants.csv')"><i data-lucide="download" style="width:12px;height:12px;"></i> Download Sample</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="try-it-section">
+                <div class="try-it-label"><i data-lucide="zap" style="width:14px;height:14px;color:#facc15;"></i> Try It Yourself — Enter Your Criteria</div>
+                <div class="try-it-controls">
+                  <div class="form-group" style="flex:2;">
+                    <label>City / Location</label>
+                    <input type="text" class="form-input" id="demo-3-city" placeholder="e.g. London, UK">
+                  </div>
+                  <div class="form-group" style="flex:2;">
+                    <label>Category / Tag</label>
+                    <input type="text" class="form-input" id="demo-3-tag" placeholder="e.g. Good for Business Meetings">
+                  </div>
+                  <div class="form-group" style="flex:1;">
+                    <label>Quantity</label>
+                    <input type="number" class="form-input" id="demo-3-qty" value="20" min="5" max="50">
+                  </div>
+                  <div class="form-group" style="flex:1;">
+                    <label>Output Format</label>
+                    <select class="form-select" id="demo-3-format">
+                      <option value="csv">CSV (.csv)</option>
+                      <option value="excel">Excel (.xlsx)</option>
+                    </select>
+                  </div>
+                </div>
+                <button class="btn btn-warning" onclick="runDemoProject(3, this)"><i data-lucide="play"></i> Generate Restaurant List</button>
+                <div class="demo-progress" id="demo-3-progress" style="display:none; margin-top:10px;">
+                  <div class="spinner"></div> <span>Collecting restaurant data...</span>
+                </div>
+                <div id="demo-3-output" class="output-preview-box" style="display:none;"></div>
+              </div>
+            </div>
+
+            <!-- ===== DEMO 4 ===== -->
+            <div class="erp-setup-card bg-glass demo-showcase-card" id="demo-4-card">
+              <div class="demo-card-header">
+                <div>
+                  <h3><i data-lucide="database" class="text-danger"></i> Demo 4: RRCA Running Club Directory Scraping</h3>
+                  <p class="text-muted text-sm">Collect running club names, addresses, and contact emails from the RRCA national directory.</p>
+                </div>
+                <span class="badge badge-danger">Web Scraping</span>
+              </div>
+
+              <div class="sample-io-grid">
+                <div class="sample-box sample-input">
+                  <div class="sample-box-label"><i data-lucide="link" style="width:13px;height:13px;"></i> Sample Input &nbsp;—&nbsp; rrca.org/clubs</div>
+                  <div class="sample-scroll-area">
+                    <p class="spv bold-line">Scraping Parameters</p>
+                    <p class="spv">🌐 Source: RRCA.org National Club Directory</p>
+                    <p class="spv">📋 Fields to Collect:</p>
+                    <p class="spv muted-line">• Club Name</p>
+                    <p class="spv muted-line">• Street Address</p>
+                    <p class="spv muted-line">• City</p>
+                    <p class="spv muted-line">• State</p>
+                    <p class="spv muted-line">• ZIP Code</p>
+                    <p class="spv muted-line">• Email Address</p>
+                    <p class="spv muted-line">• Contact Person</p>
+                    <p class="spv muted-line">• Website URL</p>
+                    <p class="spv">📦 Quantity Required: 30 clubs</p>
+                    <p class="spv">📄 Output Format: Excel (.xlsx)</p>
+                  </div>
+                </div>
+                <div class="sample-arrow"><i data-lucide="arrow-right"></i></div>
+                <div class="sample-box sample-output">
+                  <div class="sample-box-label"><i data-lucide="file-check" style="width:13px;height:13px;"></i> Sample Output &nbsp;—&nbsp; <span class="output-format-tag">Excel / CSV</span></div>
+                  <div class="sample-scroll-area" style="overflow-x:auto;">
+                    <table class="mini-table" style="min-width:480px;">
+                      <thead><tr><th>#</th><th>Club Name</th><th>City</th><th>State</th><th>Email</th><th>Contact</th></tr></thead>
+                      <tbody>
+                        <tr><td>1</td><td>New York Road Runners</td><td>New York</td><td>NY</td><td>info@nyrr.org</td><td>Club Admin</td></tr>
+                        <tr><td>2</td><td>Boston Athletic Assoc.</td><td>Boston</td><td>MA</td><td>info@baa.org</td><td>B.A.A. Office</td></tr>
+                        <tr><td>3</td><td>Chicago Area Runners</td><td>Chicago</td><td>IL</td><td>info@cararuns.org</td><td>CARA Staff</td></tr>
+                        <tr><td>4</td><td>Atlanta Track Club</td><td>Atlanta</td><td>GA</td><td>questions@atc.org</td><td>Director</td></tr>
+                        <tr><td>5</td><td>Bay Area Road Runners</td><td>San Jose</td><td>CA</td><td>contact@barr.org</td><td>Race Director</td></tr>
+                        <tr><td colspan="6" class="italic-line">...25 more rows (full 30 in download)</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="sample-stats">
+                    <i data-lucide="check-circle" style="width:11px;height:11px;color:#4ade80;"></i>
+                    30 clubs &nbsp;|&nbsp; 8 columns &nbsp;|&nbsp; Verified data
+                    <button class="btn-dl" onclick="downloadRealFile('RRCA_Running_Clubs.csv')"><i data-lucide="download" style="width:12px;height:12px;"></i> Download Sample</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="try-it-section">
+                <div class="try-it-label"><i data-lucide="zap" style="width:14px;height:14px;color:#facc15;"></i> Try It Yourself — Customise Your Scrape</div>
+                <div class="try-it-controls">
+                  <div class="form-group" style="flex:2;">
+                    <label>Filter by State (optional)</label>
+                    <input type="text" class="form-input" id="demo-4-state" placeholder="e.g. California, or leave blank for all states">
+                  </div>
+                  <div class="form-group" style="flex:1;">
+                    <label>Quantity</label>
+                    <input type="number" class="form-input" id="demo-4-qty" value="30" min="5" max="100">
+                  </div>
+                  <div class="form-group" style="flex:1;">
+                    <label>Output Format</label>
+                    <select class="form-select" id="demo-4-format">
+                      <option value="csv">CSV (.csv)</option>
+                      <option value="excel">Excel (.xlsx)</option>
+                    </select>
+                  </div>
+                </div>
+                <button class="btn btn-danger" onclick="runDemoProject(4, this)"><i data-lucide="play"></i> Generate Club Directory</button>
+                <div class="demo-progress" id="demo-4-progress" style="display:none; margin-top:10px;">
+                  <div class="spinner"></div> <span>Collecting club directory data...</span>
+                </div>
+                <div id="demo-4-output" class="output-preview-box" style="display:none;"></div>
+              </div>
+            </div>
+
+            <!-- ===== DEMO 5 ===== -->
+            <div class="erp-setup-card bg-glass demo-showcase-card" id="demo-5-card">
+              <div class="demo-card-header">
+                <div>
+                  <h3><i data-lucide="sparkles" class="text-primary"></i> Demo 5: Company Data Enrichment</h3>
+                  <p class="text-muted text-sm">Upload a basic company list (Name + Domain) and get it back enriched with Business Address, Phone Number, and CEO Name.</p>
+                </div>
+                <span class="badge badge-primary">Data Enrichment</span>
+              </div>
+
+              <div class="sample-io-grid">
+                <div class="sample-box sample-input">
+                  <div class="sample-box-label"><i data-lucide="file-spreadsheet" style="width:13px;height:13px;"></i> Sample Input &nbsp;—&nbsp; Companies_Base_List.xlsx</div>
+                  <div class="sample-scroll-area" style="overflow-x:auto;">
+                    <table class="mini-table">
+                      <thead><tr><th>#</th><th>Company Name</th><th>Domain</th></tr></thead>
+                      <tbody>
+                        <tr><td>1</td><td>Google</td><td>google.com</td></tr>
+                        <tr><td>2</td><td>Microsoft</td><td>microsoft.com</td></tr>
+                        <tr><td>3</td><td>Apple</td><td>apple.com</td></tr>
+                        <tr><td>4</td><td>Tesla</td><td>tesla.com</td></tr>
+                        <tr><td>5</td><td>Amazon</td><td>amazon.com</td></tr>
+                        <tr><td>6</td><td>Meta</td><td>meta.com</td></tr>
+                        <tr><td>7</td><td>Netflix</td><td>netflix.com</td></tr>
+                        <tr><td>8</td><td>Salesforce</td><td>salesforce.com</td></tr>
+                        <tr><td colspan="3" class="italic-line">...42 more companies</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="sample-arrow"><i data-lucide="arrow-right"></i></div>
+                <div class="sample-box sample-output">
+                  <div class="sample-box-label"><i data-lucide="file-check" style="width:13px;height:13px;"></i> Sample Output &nbsp;—&nbsp; <span class="output-format-tag">Excel / CSV</span></div>
+                  <div class="sample-scroll-area" style="overflow-x:auto;">
+                    <table class="mini-table" style="min-width:560px;">
+                      <thead><tr><th>#</th><th>Company</th><th>Address</th><th>Phone</th><th>CEO</th><th>Employees</th></tr></thead>
+                      <tbody>
+                        <tr><td>1</td><td>Google</td><td>1600 Amphitheatre Pkwy, Mountain View CA</td><td>650-253-0000</td><td>Sundar Pichai</td><td>182,000</td></tr>
+                        <tr><td>2</td><td>Microsoft</td><td>One Microsoft Way, Redmond WA 98052</td><td>800-642-7676</td><td>Satya Nadella</td><td>221,000</td></tr>
+                        <tr><td>3</td><td>Apple</td><td>One Apple Park Way, Cupertino CA 95014</td><td>408-996-1010</td><td>Tim Cook</td><td>164,000</td></tr>
+                        <tr><td>4</td><td>Tesla</td><td>1 Tesla Road, Austin TX 78725</td><td>888-518-3752</td><td>Elon Musk</td><td>140,000</td></tr>
+                        <tr><td>5</td><td>Amazon</td><td>410 Terry Ave N, Seattle WA 98109</td><td>888-280-4331</td><td>Andy Jassy</td><td>1,541,000</td></tr>
+                        <tr><td colspan="6" class="italic-line">...45 more rows (full 50 in download)</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="sample-stats">
+                    <i data-lucide="check-circle" style="width:11px;height:11px;color:#4ade80;"></i>
+                    50 companies &nbsp;|&nbsp; 4 new fields added &nbsp;|&nbsp; 96% fill rate
+                    <button class="btn-dl" onclick="downloadRealFile('Enriched_Company_Data.csv')"><i data-lucide="download" style="width:12px;height:12px;"></i> Download Sample</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="try-it-section">
+                <div class="try-it-label"><i data-lucide="zap" style="width:14px;height:14px;color:#facc15;"></i> Try It Yourself — Upload Your Company List</div>
+                <div class="try-it-controls">
+                  <div class="form-group" style="flex:2;">
+                    <label>Upload Company List (Excel or CSV with Company Name column)</label>
+                    <input type="file" class="form-input" id="demo-5-file" accept=".csv,.xlsx,.xls">
+                  </div>
+                  <div class="form-group" style="flex:1;">
+                    <label>Output Format</label>
+                    <select class="form-select" id="demo-5-format">
+                      <option value="csv">CSV (.csv)</option>
+                      <option value="excel">Excel (.xlsx)</option>
+                    </select>
+                  </div>
+                </div>
+                <button class="btn btn-primary" onclick="runDemoProject(5, this)"><i data-lucide="play"></i> Enrich My Data</button>
+                <div class="demo-progress" id="demo-5-progress" style="display:none; margin-top:10px;">
+                  <div class="spinner"></div> <span>Enriching company records...</span>
+                </div>
+                <div id="demo-5-output" class="output-preview-box" style="display:none;"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+              <div class="demo-card-header">
+                <div>
+                  <h3><i data-lucide="file-text" class="text-info"></i> Demo 1: Image / PDF to Text Conversion</h3>
+                  <p class="text-muted text-sm">Convert scanned manuscript images or PDFs directly into editable Word, Text, or PDF documents.</p>
+                </div>
+                <span class="badge badge-info">Document Typing</span>
+              </div>
+
+              <div class="sample-io-grid">
+                <!-- Sample Input -->
+                <div class="sample-box sample-input">
+                  <div class="sample-box-label"><i data-lucide="upload" style="width:13px;height:13px;"></i> Sample Input</div>
+                  <div class="sample-file-tag"><i data-lucide="image" style="width:12px;height:12px;"></i> Astrologer_Partnership_Agreement.jpg</div>
+                  <div class="sample-content-preview">
+                    <p class="sample-preview-line bold-line">7. INTELLECTUAL PROPERTY</p>
+                    <p class="sample-preview-line">Any content created by the Astrologer specifically for the Astro Soul Path Platform (written reports, recorded sessions...) shall be jointly owned...</p>
+                    <p class="sample-preview-line bold-line">8. CONFIDENTIALITY & DATA PROTECTION</p>
+                    <p class="sample-preview-line">The Astrologer agrees to keep confidential all customer personal data, session details, business information...</p>
+                    <p class="sample-preview-line bold-line">9. TERM & TERMINATION</p>
+                    <p class="sample-preview-line">a) This Agreement is valid for 12 months from the Agreement Date and shall auto-renew unless either party provides 30 days' written notice...</p>
+                    <p class="sample-preview-line ellipsis">...and more</p>
+                  </div>
+                </div>
+
+                <!-- Arrow -->
+                <div class="sample-arrow"><i data-lucide="arrow-right"></i></div>
+
+                <!-- Sample Output -->
+                <div class="sample-box sample-output">
+                  <div class="sample-box-label"><i data-lucide="download" style="width:13px;height:13px;"></i> Sample Output <span class="output-format-tag">Word / TXT / PDF</span></div>
+                  <div class="sample-file-tag output-tag"><i data-lucide="file-check" style="width:12px;height:12px;"></i> Astrologer_Partnership_Agreement.docx</div>
+                  <div class="sample-content-preview">
+                    <p class="sample-preview-line bold-line">7. INTELLECTUAL PROPERTY</p>
+                    <p class="sample-preview-line">Any content created by the Astrologer specifically for the Astro Soul Path Platform (written reports, recorded sessions with customer consent, customised horoscopes, video content) shall be jointly owned by the Astrologer and Astro Soul Path Private Limited unless otherwise agreed in writing.</p>
+                    <p class="sample-preview-line bold-line" style="margin-top:6px;">8. CONFIDENTIALITY & DATA PROTECTION</p>
+                    <p class="sample-preview-line">The Astrologer agrees to keep confidential all customer personal data, session details, business information, and Platform operational data disclosed during the term of this Agreement and for 3 years thereafter.</p>
+                    <p class="sample-stats"><i data-lucide="check-circle" style="width:11px;height:11px;color:#4ade80;"></i> Accuracy: 99.2% &nbsp;|&nbsp; Pages: 4 &nbsp;|&nbsp; Words: 1,240</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Demo 2: Spreadsheet Data Entry -->
+            <div class="erp-setup-card bg-glass demo-showcase-card" id="demo-2-card">
+              <div class="demo-card-header">
+                <div>
+                  <h3><i data-lucide="table" class="text-success"></i> Demo 2: PDF to Spreadsheet Data Entry</h3>
+                  <p class="text-muted text-sm">Extract structured fields — Name, Title, Company, Address, Phone, Email — from PDF contact lists into Excel/CSV.</p>
+                </div>
+                <span class="badge badge-success">Data Entry</span>
+              </div>
+
+              <div class="sample-io-grid">
+                <div class="sample-box sample-input">
+                  <div class="sample-box-label"><i data-lucide="upload" style="width:13px;height:13px;"></i> Sample Input</div>
+                  <div class="sample-file-tag"><i data-lucide="file" style="width:12px;height:12px;"></i> Contact_Directory.pdf</div>
+                  <div class="sample-content-preview">
+                    <p class="sample-preview-line bold-line">Regional Sales Contact Directory</p>
+                    <p class="sample-preview-line">John Doe | Chief Executive Officer</p>
+                    <p class="sample-preview-line muted-line">Acme Corp | 123 Main St, New York, NY 10001</p>
+                    <p class="sample-preview-line muted-line">📞 (555) 010-0100 | ✉ jdoe@acmecorp.com</p>
+                    <p class="sample-preview-line" style="margin-top:6px;">Jane Smith | VP Marketing</p>
+                    <p class="sample-preview-line muted-line">Tech Solutions | 456 Market St, San Francisco, CA</p>
+                    <p class="sample-preview-line muted-line">📞 (555) 020-0200 | ✉ jsmith@techsol.io</p>
+                    <p class="sample-preview-line ellipsis">...48 more entries</p>
+                  </div>
+                </div>
+
+                <div class="sample-arrow"><i data-lucide="arrow-right"></i></div>
+
+                <div class="sample-box sample-output">
+                  <div class="sample-box-label"><i data-lucide="download" style="width:13px;height:13px;"></i> Sample Output <span class="output-format-tag">Excel / CSV</span></div>
+                  <div class="sample-file-tag output-tag"><i data-lucide="file-check" style="width:12px;height:12px;"></i> Extracted_Contacts.csv</div>
+                  <div class="sample-table-preview">
+                    <table class="mini-table">
+                      <thead><tr><th>Name</th><th>Title</th><th>Company</th><th>Phone</th><th>Email</th></tr></thead>
+                      <tbody>
+                        <tr><td>John Doe</td><td>CEO</td><td>Acme Corp</td><td>555-0100</td><td>jdoe@acme.com</td></tr>
+                        <tr><td>Jane Smith</td><td>VP Mktg</td><td>Tech Solutions</td><td>555-0200</td><td>jsmith@ts.io</td></tr>
+                        <tr><td>Bob Johnson</td><td>Director</td><td>Global Finance</td><td>555-0300</td><td>bob@gf.net</td></tr>
+                      </tbody>
+                    </table>
+                    <p class="sample-stats"><i data-lucide="check-circle" style="width:11px;height:11px;color:#4ade80;"></i> 50 records extracted &nbsp;|&nbsp; 8 columns &nbsp;|&nbsp; 0 errors</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Demo 3: Restaurant Data Collection -->
+            <div class="erp-setup-card bg-glass demo-showcase-card" id="demo-3-card">
+              <div class="demo-card-header">
+                <div>
+                  <h3><i data-lucide="globe" class="text-warning"></i> Demo 3: Web Scraping — Restaurant Data</h3>
+                  <p class="text-muted text-sm">Build a curated list of restaurants good for business meetings from TripAdvisor based on city and criteria.</p>
+                </div>
+                <span class="badge badge-warning">Web Scraping</span>
+              </div>
+
+              <div class="sample-io-grid">
+                <div class="sample-box sample-input">
+                  <div class="sample-box-label"><i data-lucide="upload" style="width:13px;height:13px;"></i> Sample Input</div>
+                  <div class="sample-file-tag"><i data-lucide="link" style="width:12px;height:12px;"></i> tripadvisor.com</div>
+                  <div class="sample-content-preview">
+                    <p class="sample-preview-line bold-line">Search Criteria</p>
+                    <p class="sample-preview-line">📍 Location: <strong>New York City, NY</strong></p>
+                    <p class="sample-preview-line">🏷 Filter: Good for Business Meetings</p>
+                    <p class="sample-preview-line">📋 Fields Required:</p>
+                    <p class="sample-preview-line muted-line">• Restaurant Name &nbsp;• Website URL</p>
+                    <p class="sample-preview-line muted-line">• Address &nbsp;• Phone Number</p>
+                    <p class="sample-preview-line muted-line">• Email &nbsp;• Review Count</p>
+                    <p class="sample-preview-line muted-line">• Cuisine Type &nbsp;• Price Range</p>
+                    <p class="sample-preview-line">📦 Quantity: 20 restaurants</p>
+                  </div>
+                </div>
+
+                <div class="sample-arrow"><i data-lucide="arrow-right"></i></div>
+
+                <div class="sample-box sample-output">
+                  <div class="sample-box-label"><i data-lucide="download" style="width:13px;height:13px;"></i> Sample Output <span class="output-format-tag">Excel / CSV</span></div>
+                  <div class="sample-file-tag output-tag"><i data-lucide="file-check" style="width:12px;height:12px;"></i> NYC_Meeting_Restaurants.csv</div>
+                  <div class="sample-table-preview">
+                    <table class="mini-table">
+                      <thead><tr><th>Name</th><th>Phone</th><th>Reviews</th><th>Price</th></tr></thead>
+                      <tbody>
+                        <tr><td>Le Bernardin</td><td>212-554-1515</td><td>3,450</td><td>$$$$</td></tr>
+                        <tr><td>Daniel NYC</td><td>212-288-0033</td><td>2,890</td><td>$$$$</td></tr>
+                        <tr><td>Gramercy Tavern</td><td>212-477-0777</td><td>4,100</td><td>$$$</td></tr>
+                      </tbody>
+                    </table>
+                    <p class="sample-stats"><i data-lucide="check-circle" style="width:11px;height:11px;color:#4ade80;"></i> 20 restaurants scraped &nbsp;|&nbsp; 8 fields &nbsp;|&nbsp; Delivered in Excel</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Demo 4: Running Club Directory -->
+            <div class="erp-setup-card bg-glass demo-showcase-card" id="demo-4-card">
+              <div class="demo-card-header">
+                <div>
+                  <h3><i data-lucide="database" class="text-danger"></i> Demo 4: RRCA Running Club Directory</h3>
+                  <p class="text-muted text-sm">Collect running club names, addresses, and emails from the RRCA national directory website.</p>
+                </div>
+                <span class="badge badge-danger">Web Scraping</span>
+              </div>
+
+              <div class="sample-io-grid">
+                <div class="sample-box sample-input">
+                  <div class="sample-box-label"><i data-lucide="upload" style="width:13px;height:13px;"></i> Sample Input</div>
+                  <div class="sample-file-tag"><i data-lucide="link" style="width:12px;height:12px;"></i> rrca.org/clubs</div>
+                  <div class="sample-content-preview">
+                    <p class="sample-preview-line bold-line">Scrape Parameters</p>
+                    <p class="sample-preview-line">🌐 Source: <strong>RRCA.org National Directory</strong></p>
+                    <p class="sample-preview-line">📋 Fields Required:</p>
+                    <p class="sample-preview-line muted-line">• Club Name &nbsp;• Address</p>
+                    <p class="sample-preview-line muted-line">• City &nbsp;• State</p>
+                    <p class="sample-preview-line muted-line">• Email Address</p>
+                    <p class="sample-preview-line muted-line">• Contact Person</p>
+                    <p class="sample-preview-line">📦 Quantity: 30 clubs</p>
+                  </div>
+                </div>
+
+                <div class="sample-arrow"><i data-lucide="arrow-right"></i></div>
+
+                <div class="sample-box sample-output">
+                  <div class="sample-box-label"><i data-lucide="download" style="width:13px;height:13px;"></i> Sample Output <span class="output-format-tag">Excel / CSV</span></div>
+                  <div class="sample-file-tag output-tag"><i data-lucide="file-check" style="width:12px;height:12px;"></i> RRCA_Running_Clubs.csv</div>
+                  <div class="sample-table-preview">
+                    <table class="mini-table">
+                      <thead><tr><th>Club Name</th><th>State</th><th>Email</th></tr></thead>
+                      <tbody>
+                        <tr><td>New York Road Runners</td><td>NY</td><td>info@nyrr.org</td></tr>
+                        <tr><td>Boston Athletic Assoc.</td><td>MA</td><td>info@baa.org</td></tr>
+                        <tr><td>Chicago Area Runners</td><td>IL</td><td>info@cararuns.org</td></tr>
+                      </tbody>
+                    </table>
+                    <p class="sample-stats"><i data-lucide="check-circle" style="width:11px;height:11px;color:#4ade80;"></i> 30 clubs scraped &nbsp;|&nbsp; 6 fields &nbsp;|&nbsp; Delivered in Excel</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Demo 5: Company Data Enrichment -->
+            <div class="erp-setup-card bg-glass demo-showcase-card" id="demo-5-card">
+              <div class="demo-card-header">
+                <div>
+                  <h3><i data-lucide="sparkles" class="text-primary"></i> Demo 5: Company Data Enrichment</h3>
+                  <p class="text-muted text-sm">Upload a basic company list and receive it back enriched with Business Address, Phone Number, and CEO Name.</p>
+                </div>
+                <span class="badge badge-primary">Data Enrichment</span>
+              </div>
+
+              <div class="sample-io-grid">
+                <div class="sample-box sample-input">
+                  <div class="sample-box-label"><i data-lucide="upload" style="width:13px;height:13px;"></i> Sample Input</div>
+                  <div class="sample-file-tag"><i data-lucide="file-spreadsheet" style="width:12px;height:12px;"></i> Companies_Base_List.xlsx</div>
+                  <div class="sample-table-preview">
+                    <table class="mini-table">
+                      <thead><tr><th>Company Name</th><th>Domain</th></tr></thead>
+                      <tbody>
+                        <tr><td>Google</td><td>google.com</td></tr>
+                        <tr><td>Microsoft</td><td>microsoft.com</td></tr>
+                        <tr><td>Tesla</td><td>tesla.com</td></tr>
+                        <tr><td>Apple</td><td>apple.com</td></tr>
+                        <tr><td class="ellipsis" colspan="2">...46 more companies</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <div class="sample-arrow"><i data-lucide="arrow-right"></i></div>
+
+                <div class="sample-box sample-output">
+                  <div class="sample-box-label"><i data-lucide="download" style="width:13px;height:13px;"></i> Sample Output <span class="output-format-tag">Excel / CSV</span></div>
+                  <div class="sample-file-tag output-tag"><i data-lucide="file-check" style="width:12px;height:12px;"></i> Enriched_Company_Data.xlsx</div>
+                  <div class="sample-table-preview">
+                    <table class="mini-table">
+                      <thead><tr><th>Company</th><th>Address</th><th>Phone</th><th>CEO</th></tr></thead>
+                      <tbody>
+                        <tr><td>Google</td><td>1600 Amphitheatre Pkwy, CA</td><td>650-253-0000</td><td>Sundar Pichai</td></tr>
+                        <tr><td>Microsoft</td><td>One Microsoft Way, WA</td><td>800-642-7676</td><td>Satya Nadella</td></tr>
+                        <tr><td>Tesla</td><td>1 Tesla Rd, Austin TX</td><td>888-518-3752</td><td>Elon Musk</td></tr>
+                      </tbody>
+                    </table>
+                    <p class="sample-stats"><i data-lucide="check-circle" style="width:11px;height:11px;color:#4ade80;"></i> 50 companies enriched &nbsp;|&nbsp; 3 new fields added &nbsp;|&nbsp; 96% fill rate</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
       </div>
     </main>
+
 
   </div>
 

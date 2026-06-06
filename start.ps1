@@ -55,14 +55,25 @@ if ($desktopPath) {
     $Shortcut.WorkingDirectory = $scriptDir
     $Shortcut.IconLocation = "C:\Windows\System32\shell32.dll,14"
     $Shortcut.Save()
-    
     Write-Host "Desktop shortcut created at: $shortcutPath" -ForegroundColor Green
 }
 
-# Open default browser
-Start-Process "http://localhost:$port"
+# Start the server in the background sharing the console
+$serverProcess = Start-Process python -ArgumentList "-m http.server $port" -NoNewWindow -PassThru
 
-# Host application
-Write-Host "Server running at http://localhost:$port" -ForegroundColor Green
-Write-Host "Press Ctrl+C to stop the server." -ForegroundColor Yellow
-python -m http.server $port
+try {
+    # Open default browser after a short delay to allow Python server to start listening
+    Start-Sleep -Milliseconds 800
+    Start-Process "http://localhost:$port"
+    
+    # Host application and keep PowerShell window open
+    Write-Host "Server running at http://localhost:$port" -ForegroundColor Green
+    Write-Host "Press Ctrl+C to stop the server." -ForegroundColor Yellow
+    $serverProcess | Wait-Process
+}
+finally {
+    # Clean up the Python process if it is still running when script exits
+    if ($serverProcess -and -not $serverProcess.HasExited) {
+        Stop-Process -Id $serverProcess.Id -Force -ErrorAction SilentlyContinue
+    }
+}

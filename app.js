@@ -230,6 +230,9 @@ function switchTab(targetId) {
     sectionTitle.textContent = "Executive PDF Center";
     sectionSubtitle.textContent = "Generate interactive editable PDF reports for stakeholders";
     updatePDFPreview();
+  } else if (targetId === "data-entry-section") {
+    sectionTitle.textContent = "Data Typing & Entry Hub";
+    sectionSubtitle.textContent = "Perform high-accuracy copy-typing and data validation operations";
   }
 }
 
@@ -1699,4 +1702,84 @@ function downloadAllSamples() {
       document.body.removeChild(link);
     }, index * 350); // Stagger downloads to prevent browser blocking
   });
+}
+
+// --------------------------------------------------
+// 10. Data Typing & Entry Demo Projects Logic
+// --------------------------------------------------
+let demosCompleted = 0;
+
+function runDemoProject(demoId, button) {
+  const btn = button;
+  const originalText = btn.innerHTML;
+  
+  // Basic validation based on demo type
+  if (demoId === 1) {
+    const file = document.getElementById("demo-1-file").files[0];
+    if (!file) return showToast("Please upload a scanned image or PDF first.", "error");
+  } else if (demoId === 2) {
+    const file = document.getElementById("demo-2-file").files[0];
+    if (!file) return showToast("Please upload a PDF contact list.", "error");
+  } else if (demoId === 5) {
+    const file = document.getElementById("demo-5-file").files[0];
+    if (!file) return showToast("Please upload a spreadsheet.", "error");
+  }
+
+  // Disable button and show progress spinner
+  btn.disabled = true;
+  btn.innerHTML = `<div class="spinner" style="display:inline-block; margin-right:8px; border-top-color:#fff;"></div> Processing...`;
+  const progressDiv = document.getElementById(`demo-${demoId}-progress`);
+  if (progressDiv) progressDiv.style.display = 'block';
+
+  // Simulate processing delay (2.5 seconds)
+  setTimeout(() => {
+    btn.disabled = false;
+    btn.innerHTML = originalText;
+    if (progressDiv) progressDiv.style.display = 'none';
+
+    // Generate simulated outputs based on the project
+    if (demoId === 1) {
+      const format = document.getElementById("demo-1-format").value;
+      if (format === "word") {
+        showToast("OCR processing complete. Word document generated.", "success");
+        downloadRealFile("Astrologer_Partnership_Agreement.docx");
+      } else if (format === "text") {
+        showToast("OCR processing complete. Text file generated.", "success");
+        downloadRealFile("Astrologer_Partnership_Agreement.txt");
+      } else if (format === "pdf") {
+        showToast("OCR processing complete. PDF generated.", "success");
+        downloadRealFile("Astrologer_Partnership_Agreement.pdf");
+      }
+    } else if (demoId === 2) {
+      showToast("Data extraction complete. Exporting to Spreadsheet.", "success");
+      downloadRealFile("Extracted_Contacts.csv");
+    } else if (demoId === 3) {
+      showToast("TripAdvisor scrape complete. 20 Restaurants found.", "success");
+      downloadRealFile("NYC_Meeting_Restaurants.csv");
+    } else if (demoId === 4) {
+      showToast("RRCA scraping complete. 30 Clubs fetched.", "success");
+      downloadRealFile("RRCA_Running_Clubs.csv");
+    } else if (demoId === 5) {
+      showToast("Data enrichment complete. Missing fields updated.", "success");
+      downloadRealFile("Enriched_Company_Data.csv");
+    }
+
+    // Update KPI
+    demosCompleted++;
+    const countEl = document.getElementById("demo-completed-count");
+    if (countEl && demosCompleted <= 5) {
+      countEl.textContent = `${demosCompleted} / 5`;
+    }
+
+  }, 2500);
+}
+
+function downloadRealFile(filename) {
+  const a = document.createElement('a');
+  a.href = filename;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  showToast(`Saved ${filename} to browser Downloads folder!`, "success");
 }
