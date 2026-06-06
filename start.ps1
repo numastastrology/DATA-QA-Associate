@@ -58,22 +58,10 @@ if ($desktopPath) {
     Write-Host "Desktop shortcut created at: $shortcutPath" -ForegroundColor Green
 }
 
-# Start the server in the background sharing the console
-$serverProcess = Start-Process python -ArgumentList "-m http.server $port" -NoNewWindow -PassThru
+# Start the browser in the background after a 1-second delay to allow Python server to start listening
+Start-Process cmd -ArgumentList "/c timeout /t 1 > nul && start http://localhost:$port" -WindowStyle Hidden
 
-try {
-    # Open default browser after a short delay to allow Python server to start listening
-    Start-Sleep -Milliseconds 800
-    Start-Process "http://localhost:$port"
-    
-    # Host application and keep PowerShell window open
-    Write-Host "Server running at http://localhost:$port" -ForegroundColor Green
-    Write-Host "Press Ctrl+C to stop the server." -ForegroundColor Yellow
-    $serverProcess | Wait-Process
-}
-finally {
-    # Clean up the Python process if it is still running when script exits
-    if ($serverProcess -and -not $serverProcess.HasExited) {
-        Stop-Process -Id $serverProcess.Id -Force -ErrorAction SilentlyContinue
-    }
-}
+# Host application (running in foreground)
+Write-Host "Server running at http://localhost:$port" -ForegroundColor Green
+Write-Host "Press Ctrl+C to stop the server." -ForegroundColor Yellow
+python -m http.server $port
