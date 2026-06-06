@@ -11,29 +11,10 @@ while ($true) {
 
 Write-Host "Starting Data QA Associate Pro on port $port..." -ForegroundColor Cyan
 
-# Determine correct local Desktop path (avoid OneDrive)
-$desktopPaths = @(
-    [Environment]::GetFolderPath('Desktop'),
-    "C:\Users\kanna\Desktop",
-    "$env:USERPROFILE\Desktop"
-)
-
-$desktopPath = $null
-foreach ($dp in $desktopPaths) {
-    if ((Test-Path $dp) -and ($dp -notlike '*OneDrive*')) {
-        $desktopPath = $dp
-        break
-    }
-}
-
-# Fallback: if all paths are OneDrive, use the first available
-if (-not $desktopPath) {
-    foreach ($dp in $desktopPaths) {
-        if (Test-Path $dp) {
-            $desktopPath = $dp
-            break
-        }
-    }
+# Determine correct local Desktop path
+$desktopPath = [Environment]::GetFolderPath('Desktop')
+if (-not (Test-Path $desktopPath)) {
+    $desktopPath = Join-Path $env:USERPROFILE "Desktop"
 }
 
 if ($desktopPath) {
